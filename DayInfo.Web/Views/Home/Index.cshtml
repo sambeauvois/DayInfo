@@ -1,0 +1,59 @@
+﻿@model DayInfo.Web.Models.DayInfoModel
+@{
+    ViewBag.Title = "Luxembourg";
+}
+
+<div class="jumbotron">
+    <h1>Jours fériés</h1>
+    <p class="lead">Liste des jours fériés en Belgique et au Luxembourg en @Model.Year</p>
+    <nav>
+        <ul class="pagination pagination-lg">
+            @for (int i = DateTime.Today.Year - 3; i < DateTime.Today.Year + 10; i++)
+            {
+                <li @(i == Model.Year ? "class=active" : "")>
+                    @Html.ActionLink(i.ToString(), "Index", new { id = i })
+                </li>
+            }
+        </ul>
+    </nav>
+</div>
+
+<div class="row">
+
+    <div class="col-md-6">
+        <h2>Belgique @Model.Year (@Model.Belgium.Count() jours fériés)</h2>
+        <table class="table table-striped table-hover">
+            <tr>
+                <th>Date</th>
+                <th>Jour</th>
+            </tr>
+            @foreach (var day in Model.Belgium)
+            {
+                <tr>
+                    <td>@day.Date.ToString("dddd dd MMMM yyyy")</td>
+                    <td>@day.DayInfo.DisplayName</td>
+                </tr>
+            }
+        </table>
+
+    </div>
+    <div class="col-md-6">
+        <h2>Luxembourg @Model.Year (@Model.Belgium.Count() jours fériés)</h2>
+        <p>
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>Date</th>
+                    <th>Jour</th>
+                </tr>
+                @foreach (var day in Model.Luxembourg)
+                {
+                    <tr>
+                        <td>@day.Date.ToString("dddd dd MMMM yyyy")</td>
+                        <td>@day.DayInfo.DisplayName</td>
+                    </tr>
+                }
+            </table>
+        </p>
+
+    </div>
+</div>
