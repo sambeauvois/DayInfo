@@ -60,12 +60,20 @@ namespace DayInfo.Tests
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void DemoTest()
         {
-            //
-            // TODO: Add test logic here
-            //
+            IEnumerable<DateInfo> luxembourgDayOff = DateInfo.Get("LU", DateTime.Today.Year);
+
+            IEnumerable<DateInfo> belgiumDayOff = DateInfo.Get("BE", DateTime.Today.Year);
+
+            foreach(var belgiumDate in belgiumDayOff)
+            {
+                TestContext.WriteLine("date : {0:d}", belgiumDate.Date);
+                TestContext.WriteLine("Holliday : {0:d}", belgiumDate.DayInfo.EnglishName);
+            }
+
         }
+
 
         public void CountryTest(string countrycode)
         {
