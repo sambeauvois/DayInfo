@@ -10,6 +10,7 @@ namespace DayInfo.Web.Controllers
 {
     public class HomeController : Controller
     {
+        [OutputCache(Duration=3600,VaryByParam="id")]
         public ActionResult Index(int? id)
         {
             DayInfoModel model = new DayInfoModel

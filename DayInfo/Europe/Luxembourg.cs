@@ -9,7 +9,9 @@ using Localized = DayInfo.Europe.Resources.Luxembourg;
 namespace DayInfo.Europe
 {
     public class Luxembourg : DayInfo
-    {   // dayinfo factory will return dayinfo, initialized by child classes
+    {
+        private static List<DayInfo> list;
+
         public Luxembourg()
             : base("LU")
         {
@@ -19,50 +21,53 @@ namespace DayInfo.Europe
         //// todo :tester
         public override IEnumerable<DayInfo> All()
         {
-            Days.AddRange(new ChristianDayInfo().All());
-            AddHollidays();
-        
-            return base.All();
+            if (list == null)
+            {
+                list = new List<DayInfo>();
+                list.AddRange(new ChristianDayInfo().All());
+                list.AddRange(GetHollidays());
+
+            }
+            return list;
         }
 
-        private void AddHollidays()
+        private IEnumerable<Luxembourg> GetHollidays()
         {
-            Days.Add(new Luxembourg
+            return new Luxembourg[]
             {
-                DisplayName = "Nouvel an",
-                EnglishName = "New Year",
-                IsHolliday = true,
-                NativeName = "Nouvel an",
-                Definition = new DayDefinition(1, Months.January)
-            });
-
-            Days.Add(new Luxembourg
-            {
-                DisplayName = "Fête du travail",
-                EnglishName = "Labour Day",
-                IsHolliday = true,
-                NativeName = "Fête du travail",
-                Definition = new DayDefinition(1, Months.May)
-            });
-
-            // national day
-            Days.Add(new Luxembourg
-            {
-                DisplayName = Localized.NationalDayTitle,
-                EnglishName = "National Day",
-                IsHolliday = true,
-                NativeName = "Fête nationale",
-                Definition = new DayDefinition(23, Months.June)
-            });
-
-            Days.Add(new Luxembourg
-            {
-                DisplayName = "St Etienne",
-                EnglishName = "St Etienne",
-                IsHolliday = true,
-                NativeName = "St Etienne",
-                Definition = new DayDefinition(26, Months.December)
-            });
+                new Luxembourg
+                {
+                    DisplayName = "Nouvel an",
+                    EnglishName = "New Year",
+                    IsHolliday = true,
+                    NativeName = "Nouvel an",
+                    Definition = new DayDefinition(1, Months.January)
+                },
+                new Luxembourg
+                {
+                    DisplayName = "Fête du travail",
+                    EnglishName = "Labour Day",
+                    IsHolliday = true,
+                    NativeName = "Fête du travail",
+                    Definition = new DayDefinition(1, Months.May)
+                },
+                new Luxembourg
+                {
+                    DisplayName = Localized.NationalDayTitle,
+                    EnglishName = "National Day",
+                    IsHolliday = true,
+                    NativeName = "Fête nationale",
+                    Definition = new DayDefinition(23, Months.June)
+                },
+                new Luxembourg
+                {
+                    DisplayName = "St Etienne",
+                    EnglishName = "St Etienne",
+                    IsHolliday = true,
+                    NativeName = "St Etienne",
+                    Definition = new DayDefinition(26, Months.December)
+                }
+            };
         }
     }
 }

@@ -8,9 +8,10 @@ using Localized = DayInfo.Europe.Resources.Belgium;
 
 namespace DayInfo.Europe
 {
-    [CatholicCountry("test")]
+    // [CatholicCountry("test")]
     public class Belgium : DayInfo
     {
+        private static List<DayInfo> list;
         // dayinfo factory will return dayinfo, initialized by child classes
         public Belgium()
             : base("BE")
@@ -19,57 +20,62 @@ namespace DayInfo.Europe
 
         public override IEnumerable<DayInfo> All()
         {
-            AddHollidays();
-            // other special day (st catherine: tout bois prend racine, ...)
-            return base.All();
+            if (list == null)
+            {
+                list = new List<DayInfo>();
+                list.AddRange(new ChristianDayInfo().All());
+                list.AddRange(GetHollidays());
+            }
+            return list;
         }
 
-        private void AddHollidays()
+        private IEnumerable<Belgium> GetHollidays()
         {
-            Days.Add(new Belgium
+            return new Belgium[]
             {
-                DisplayName = "Nouvel an",
-                EnglishName = "New Year",
-                IsHolliday = true,
-                NativeName = "Nouvel an",
-                Definition = new DayDefinition(1, Months.January)
-            });
+                new Belgium
+                {
+                    DisplayName = "Nouvel an",
+                    EnglishName = "New Year",
+                    IsHolliday = true,
+                    NativeName = "Nouvel an",
+                    Definition = new DayDefinition(1, Months.January)
+                },
 
-            Days.Add(new Belgium
-            {
-                DisplayName = Localized.LabourDayTitle,
-                DisplayDescription = Localized.LabourDayDescription,
-                DisplayInfoURL = Localized.LabourDayLink,
-                EnglishName = "Labour Day",
-                IsHolliday = true,
-                NativeName = "Fête du travail",
-                Definition = new DayDefinition(1, Months.May)
-            });
+                new Belgium
+                {
+                    DisplayName = Localized.LabourDayTitle,
+                    DisplayDescription = Localized.LabourDayDescription,
+                    DisplayInfoURL = Localized.LabourDayLink,
+                    EnglishName = "Labour Day",
+                    IsHolliday = true,
+                    NativeName = "Fête du travail",
+                    Definition = new DayDefinition(1, Months.May)
+                },
+            
+                new Belgium
+                {
+                    DisplayName = Localized.NationalDayTitle,
+                    DisplayDescription = Localized.NationalDayDescription,
+                    DisplayInfoURL = Localized.NationalDayLink,
+                    EnglishName = "National Day",
+                    IsHolliday = true,
+                    NativeName = "Fête nationale",
+                    Definition = new DayDefinition(21, Months.July)
+                },
 
-            // national day
-            Days.Add(new Belgium
-            {
-                DisplayName = Localized.NationalDayTitle,
-                DisplayDescription = Localized.NationalDayDescription,
-                DisplayInfoURL = Localized.NationalDayLink,
-                EnglishName = "National Day",
-                IsHolliday = true,
-                NativeName = "Fête nationale",
-                Definition = new DayDefinition(21, Months.July)
-            });
-
-            Days.Add(new Belgium
-            {
-                DisplayName = Localized.ArmisticeTitle,
-                DisplayDescription = Localized.ArmisticeDescription,
-                DisplayInfoURL = Localized.ArmisticeLink,
-                EnglishName = "First Armistice",
-                IsHolliday = true,
-                NativeName = "Armistice de 1918",
-                Definition = new DayDefinition(11, Months.November),
-                DisplayInfoURLs = GetLinksFromRessource(Localized.ArmisticeLinks)
-            });
-
+                new Belgium
+                {
+                    DisplayName = Localized.ArmisticeTitle,
+                    DisplayDescription = Localized.ArmisticeDescription,
+                    DisplayInfoURL = Localized.ArmisticeLink,
+                    EnglishName = "First Armistice",
+                    IsHolliday = true,
+                    NativeName = "Armistice de 1918",
+                    Definition = new DayDefinition(11, Months.November),
+                    DisplayInfoURLs = GetLinksFromRessource(Localized.ArmisticeLinks)
+                }
+            };
         }
 
     }

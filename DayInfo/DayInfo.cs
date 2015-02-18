@@ -111,12 +111,12 @@ namespace DayInfo
         }
         public virtual IEnumerable<DayInfo> All()
         {
-            Attribute assembly = this.GetType().GetTypeInfo().GetCustomAttribute(typeof(CatholicCountryAttribute));
-            if (assembly != null)
-            {
-                ChristianDayInfo cdi = new ChristianDayInfo();
-                Days.AddRange(cdi.All());
-            }
+            //Attribute assembly = this.GetType().GetTypeInfo().GetCustomAttribute(typeof(CatholicCountryAttribute));
+            //if (assembly != null)
+            //{
+            //    ChristianDayInfo cdi = new ChristianDayInfo();
+            //    Days.AddRange(cdi.All());
+            //}
             return Days;
         }
 

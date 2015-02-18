@@ -10,6 +10,7 @@ namespace DayInfo
 {
     public class ChristianDayInfo : DayInfo
     {
+        private static List<ChristianDayInfo> list;
         public ChristianDayInfo()
             : base("CHRISTIAN_DAYS")
         {
@@ -17,66 +18,66 @@ namespace DayInfo
 
         public override IEnumerable<DayInfo> All()
         {
-            Days.Add(new ChristianDayInfo
+            if(list==null)
             {
-                DisplayName = Localized.EasterTitle,
-                DisplayDescription = Localized.EasterDescription,
-                EnglishName = "Easter monday",
-                IsHolliday = true,
-                NativeName = "Pâques",
-                Definition = new DayDefinition().DaysAfter(SpecialDays.ChristianEaster, 1)
-            });
-            Days.Add(new ChristianDayInfo
-            {
-                DisplayName = "Ascension",
-                EnglishName = "Ascension",
-                IsHolliday = true,
-                NativeName = "Ascension",
-                Definition = new DayDefinition().DaysAfter(SpecialDays.ChristianEaster, 39)
-            });
-            //Days.Add(new ChristianDayInfo
-            //{
-            //    DisplayName = "Pentecote",
-            //    EnglishName = "pentecode_totransalate",
-            //    IsHolliday = false,
-            //    NativeName = "Pentecode",
-            //    Definition = new DayDefinition().DaysAfter(SpecialDays.ChristianEaster, 49)
-            //});
-            Days.Add(new ChristianDayInfo
-            {
-                DisplayName = "Lundi de Pentecote",
-                EnglishName = "pentecode_totransalate",
-                IsHolliday = true,
-                NativeName = "Lundi de Pentecote",
-                Definition = new DayDefinition().DaysAfter(SpecialDays.ChristianEaster, 50)
-            });
-            Days.Add(new ChristianDayInfo
-            {
-                DisplayName = "Assomption",
-                EnglishName = "Assumption ",
-                IsHolliday = true,
-                NativeName = "Assomption",
-                Definition = new DayDefinition(15, Months.August)
-            });
+                list = new List<ChristianDayInfo>();
 
-            Days.Add(new ChristianDayInfo
-            {
-                DisplayName = "Toussaint",
-                EnglishName = "All Saints",
-                IsHolliday = true,
-                NativeName = "Toussaint",
-                Definition = new DayDefinition(1, Months.November)
-            });
+                list.Add(new ChristianDayInfo
+                {
+                    DisplayName = Localized.EasterTitle,
+                    DisplayDescription = Localized.EasterDescription,
+                    EnglishName = "Easter monday",
+                    IsHolliday = true,
+                    NativeName = "Pâques",
+                    Definition = new DayDefinition().DaysAfter(SpecialDays.ChristianEaster, 1)
+                });
 
-            Days.Add(new ChristianDayInfo
-            {
-                DisplayName = "Noël",
-                EnglishName = "Christmas",
-                IsHolliday = true,
-                NativeName = "Noël",
-                Definition = new DayDefinition(25, Months.December)
-            });
-            return base.All();
+                list.Add(new ChristianDayInfo
+                {
+                    DisplayName = "Ascension",
+                    EnglishName = "Ascension",
+                    IsHolliday = true,
+                    NativeName = "Ascension",
+                    Definition = new DayDefinition().DaysAfter(SpecialDays.ChristianEaster, 39)
+                });
+
+                list.Add(new ChristianDayInfo
+                {
+                    DisplayName = "Lundi de Pentecote",
+                    EnglishName = "pentecode_totransalate",
+                    IsHolliday = true,
+                    NativeName = "Lundi de Pentecote",
+                    Definition = new DayDefinition().DaysAfter(SpecialDays.ChristianEaster, 50)
+                });
+
+                list.Add(new ChristianDayInfo
+                {
+                    DisplayName = "Assomption",
+                    EnglishName = "Assumption ",
+                    IsHolliday = true,
+                    NativeName = "Assomption",
+                    Definition = new DayDefinition(15, Months.August)
+                });
+
+                list.Add(new ChristianDayInfo
+                {
+                    DisplayName = "Toussaint",
+                    EnglishName = "All Saints",
+                    IsHolliday = true,
+                    NativeName = "Toussaint",
+                    Definition = new DayDefinition(1, Months.November)
+                });
+
+                list.Add(new ChristianDayInfo
+                {
+                    DisplayName = "Noël",
+                    EnglishName = "Christmas",
+                    IsHolliday = true,
+                    NativeName = "Noël",
+                    Definition = new DayDefinition(25, Months.December)
+                });
+            }
+            return list;
         }
 
         public static DateTime Easter
