@@ -12,16 +12,19 @@ namespace DayInfo.Web.Controllers
     {
         public ActionResult Index(int? id)
         {
-            DayInfoModel model = new DayInfoModel();
+            DayInfoModel model = new DayInfoModel
+            {
+                Year = DateTime.Today.Year
+            };
 
             if (id.HasValue)
             {
-                model.Year = id.Value;
+                if (id.Value >= DateTime.MinValue.Year && id.Value <= DateTime.MaxValue.Year)
+                {
+                    model.Year = id.Value;
+                }
             }
-            else
-            {
-                model.Year = DateTime.Today.Year;
-            }
+
 
             model.Luxembourg = DateInfo.Get("LU", model.Year).OrderBy(x => x.Date);
             model.Belgium = DateInfo.Get("BE", model.Year).OrderBy(x => x.Date);
