@@ -6,8 +6,8 @@ For now it provides the day off for Belgium and Luxembourg
 
 Here is a demo : http://joursferies.eu/
 
-use :
-'
+### use :
+```csharp
             IEnumerable<DateInfo> belgiumDayOff = DateInfo.Get("BE", DateTime.Today.Year);// or "LU"
 
             foreach(var belgiumDate in belgiumDayOff)
@@ -15,9 +15,11 @@ use :
                 TestContext.WriteLine("date : {0:d}", belgiumDate.Date);
                 TestContext.WriteLine("Holliday : {0:d}", belgiumDate.DayInfo.EnglishName);
             }
-            
-output
-'
+```         
+
+#### output
+
+```
 date : 06/04/2015
 Holliday : Easter monday
 date : 14/05/2015
@@ -38,3 +40,4 @@ date : 21/07/2015
 Holliday : National Day
 date : 11/11/2015
 Holliday : First Armistice
+```
