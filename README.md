@@ -13,7 +13,7 @@ Here is a demo : http://joursferies.eu/
             foreach(var belgiumDate in belgiumDayOff)
             {
                 TestContext.WriteLine("date : {0:d}", belgiumDate.Date);
-                TestContext.WriteLine("Holiday : {0:d}", belgiumDate.DayInfo.EnglishName);
+                TestContext.WriteLine("Holiday : {0}", belgiumDate.DayInfo.EnglishName);
             }
 ```         
 
