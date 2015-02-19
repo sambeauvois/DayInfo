@@ -13,7 +13,7 @@ Here is a demo : http://joursferies.eu/
             foreach(var belgiumDate in belgiumDayOff)
             {
                 TestContext.WriteLine("date : {0:d}", belgiumDate.Date);
-                TestContext.WriteLine("Holliday : {0:d}", belgiumDate.DayInfo.EnglishName);
+                TestContext.WriteLine("Holiday : {0:d}", belgiumDate.DayInfo.EnglishName);
             }
 ```         
 
@@ -21,23 +21,23 @@ Here is a demo : http://joursferies.eu/
 
 ```
 date : 06/04/2015
-Holliday : Easter monday
+Holiday : Easter monday
 date : 14/05/2015
-Holliday : Ascension
+Holiday : Ascension
 date : 25/05/2015
-Holliday : pentecode_totransalate
+Holiday : pentecode_totransalate
 date : 15/08/2015
-Holliday : Assumption 
+Holiday : Assumption 
 date : 01/11/2015
-Holliday : All Saints
+Holiday : All Saints
 date : 25/12/2015
-Holliday : Christmas
+Holiday : Christmas
 date : 01/01/2015
-Holliday : New Year
+Holiday : New Year
 date : 01/05/2015
-Holliday : Labour Day
+Holiday : Labour Day
 date : 21/07/2015
-Holliday : National Day
+Holiday : National Day
 date : 11/11/2015
-Holliday : First Armistice
+Holiday : First Armistice
 ```
