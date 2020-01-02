@@ -1,0 +1,36 @@
+﻿@model DayInfo.Web.Models.CarnivalsModel
+
+@{
+    ViewBag.Title = "Laetare";
+    int i = 0;
+}
+
+<h2>Les dates du leatare de Stavelot <small>(voir <a href="http://www.laetare-stavelot.be/" target="_blank">www.laetare-stavelot.be/</a> )</small></h2>
+
+<hr />
+<div class="row">
+    <div class="col-md-12 text-right">
+        <a href="#current">Cette année</a>
+    </div>
+</div>
+<br />
+
+@foreach (var date in Model.Carnivals)
+{
+    bool current = date.Date.Year == DateTime.Today.Year;
+    <div @(current ? "id=current" : "") class="row @(current ? "alert alert-info" : "")">
+        <div class="col-md-3">
+            @(i++)
+        </div>
+        <div class="col-md-3">
+            @date.Date.AddDays(-1).ToString("dddd dd MMMM yyyy")
+        </div>
+        <div class="col-md-3">
+            @date.Date.ToString("dddd dd MMMM yyyy")
+        </div>
+        <div class="col-md-3">
+            @date.Date.AddDays(1).ToString("dddd dd MMMM yyyy")
+        </div>
+    </div>
+}
+

@@ -33,5 +33,25 @@ namespace DayInfo.Web.Controllers
             return View(model);
         }
 
+        public ActionResult Laetare()
+        {
+            CarnivalsModel carnivalsModel = new CarnivalsModel();
+            carnivalsModel.Carnivals = new List<DateInfo>();
+            CarnivalsModel carnivalsModel2 = carnivalsModel;
+            Belgium belgium = new Belgium();
+            IEnumerable<Belgium> enumerable = belgium.Carnivals();
+            int year = DateTime.Today.Year;
+            int num = 1502;
+            for (int i = num; i < year + 50; i++)
+            {
+                foreach (Belgium item in enumerable)
+                {
+                    DateInfo day = DateInfo.GetDay(i, item);
+                    carnivalsModel2.Carnivals.Add(day);
+                }
+            }
+            return View(carnivalsModel2);
+        }
+
     }
 }

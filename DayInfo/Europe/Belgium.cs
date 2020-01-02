@@ -52,7 +52,7 @@ namespace DayInfo.Europe
                     NativeName = "Fête du travail",
                     Definition = new DayDefinition(1, Months.May)
                 },
-            
+
                 new Belgium
                 {
                     DisplayName = Localized.NationalDayTitle,
@@ -78,5 +78,20 @@ namespace DayInfo.Europe
             };
         }
 
+        public IEnumerable<Belgium> Carnivals()
+        {
+            return new Belgium[1]
+            {
+                new Belgium
+                {
+                    DisplayName = "Laetare",
+                    EnglishName = "Laetare",
+                    IsHolliday = false,
+                    NativeName = "Laetare",
+                    DisplayInfoURL = "http://www.laetare-stavelot.be/",
+                    Definition = new DayDefinition().Before(SpecialDays.ChristianEaster, DayDefinition.TimeRelationUnits.Weeks, 3)
+                }
+            };
+        }
     }
 }

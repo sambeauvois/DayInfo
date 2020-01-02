@@ -20,7 +20,7 @@ namespace DayInfo
             set;
         }
 
-        private static DateInfo GetDay(int year, DayInfo di)
+        public static DateInfo GetDay(int year, DayInfo di)
         {
             return new DateInfo
             {
