@@ -33,7 +33,12 @@ namespace DayInfo
         {
             foreach (var dayInfo in DayInfo.All(twoLetterISORegionName))
             {
-                yield return GetDay(year, dayInfo);
+
+                if ((dayInfo.StartingYear == null || year >= dayInfo.StartingYear)
+                    && (dayInfo.EndingYear == null || year <= dayInfo.EndingYear))
+                {
+                    yield return GetDay(year, dayInfo);
+                }
             }
         }
     }

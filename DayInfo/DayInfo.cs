@@ -64,6 +64,15 @@ namespace DayInfo
             set;
         }
 
+        /// <summary>
+        /// If starts in a specific year
+        /// </summary>
+        public int? StartingYear { get; set; }
+        /// <summary>
+        /// If removed after a specific year
+        /// </summary>
+        public int? EndingYear { get; set; }
+
         public class Url
         {
             public string Title { get; set; }

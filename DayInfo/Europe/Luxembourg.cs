@@ -51,6 +51,15 @@ namespace DayInfo.Europe
                     NativeName = "Fête du travail",
                     Definition = new DayDefinition(1, Months.May)
                 },
+                  new Luxembourg
+                {
+                    DisplayName = "Journée de l'Europe",
+                    EnglishName = "Europe Day",
+                    IsHolliday = true,
+                    NativeName = "Journée de l'Europe",
+                    Definition = new DayDefinition(9, Months.May),
+                    StartingYear = 2019 // this is a new public holiday
+                },
                 new Luxembourg
                 {
                     DisplayName = Localized.NationalDayTitle,
